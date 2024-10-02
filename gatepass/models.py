@@ -13,7 +13,9 @@ class GatePass(models.Model):
         ('Yes', 'Yes'),
         ('No', 'No'),
     ]
+    
 
+    objects = models.Manager()
     student_id = models.CharField(max_length=50)
     student_mo_no = models.CharField(max_length=15)
     date = models.DateField(default=timezone.now)

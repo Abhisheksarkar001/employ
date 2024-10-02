@@ -16,6 +16,9 @@ class VisitorRegisterAdmin(admin.ModelAdmin):
     search_fields = ('name', 'visitor_mobile', 'visit_purpose')
     list_filter = ('visitor_type', 'whom_to_meet')
 
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+
 
 class AppointmentRegisterAdmin(admin.ModelAdmin):
     list_display = (
@@ -28,6 +31,9 @@ class AppointmentRegisterAdmin(admin.ModelAdmin):
     )
     search_fields = ('name', 'mo_no', 'purpose')
     list_filter = ('appointee_type', 'appointment_status', 'appointment_date')
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
 
 
 admin.site.register(VisitorRegister, VisitorRegisterAdmin)

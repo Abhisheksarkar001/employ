@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'genset.apps.GensetConfig',
     'gatepass.apps.GatepassConfig',
     'visiter.apps.VisiterConfig',
+    'assets_in_out.apps.AssetsInOutConfig',
+    'placement.apps.PlacementConfig',
+    'vacancy.apps.VacancyConfig',
 ]
 
 MIDDLEWARE = [

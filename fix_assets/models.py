@@ -137,7 +137,3 @@ class IssueReturn(models.Model):
         verbose_name_plural = "IssueReturn"
         verbose_name = "IssueReturn"
 
-
-class AssetsNo(models.Model):
-
-    object = models.Manager()

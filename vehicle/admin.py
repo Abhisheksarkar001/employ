@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import VehicleMaster, VehicleJourneyDetail, VehicleFuelRequisition, VehicleMaintenanceRecord
 
+
+
 class VehicleMasterAdmin(admin.ModelAdmin):
     list_display = ('vehicle_type', 'purchase_date', 'bill_no', 'amount', 'road_permit_date', 'road_tax_date', 'pollution_date', 'insurance_date', 'status', 'created_by')
     search_fields = ('vehicle_type', 'bill_no', 'status')

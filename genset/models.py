@@ -35,8 +35,8 @@ class GensetMaster(models.Model):
         return str(self.genset_no)
 
     class Meta:
-        verbose_name_plural = "GensetMaster"
-        verbose_name = "GensetMaster"
+        verbose_name_plural = "Genset Master"
+        verbose_name = "Genset Master"
 
 
 
@@ -71,8 +71,8 @@ class GensetRunningDetail(models.Model):
         return str(self.genset_no)
 
     class Meta:
-        verbose_name_plural = "GensetRunningDetail"
-        verbose_name = "GensetRunningDetail"
+        verbose_name_plural = "Genset Running Detail"
+        verbose_name = "Genset Running Detail"
 
 
 
@@ -101,8 +101,8 @@ class GensetFuelRequisition(models.Model):
         return str(self.genset_no)
 
     class Meta:
-        verbose_name_plural = "GensetFuelRequisition"
-        verbose_name = "GensetFuelRequisition"
+        verbose_name_plural = "Genset Fuel Requisition"
+        verbose_name = "Genset Fuel Requisition"
 
 
 
@@ -124,5 +124,5 @@ class GensetMaintenanceRecord(models.Model):
         return str(self.genset_no)
 
     class Meta:
-        verbose_name_plural = "GensetMaintenanceRecord"
-        verbose_name = "GensetMaintenanceRecord"
+        verbose_name_plural = "Genset Maintenance Record"
+        verbose_name = "Genset Maintenance Record"

@@ -9,7 +9,7 @@ class GatePassAdmin(admin.ModelAdmin):
     list_filter = ('pass_type', 'parent_approval', 'date')
 
     def save_model(self, request, obj, form, change):
-        if not obj.pk:  
+        if not change:  
             obj.approved_by = request.user  
         super().save_model(request, obj, form, change)
 

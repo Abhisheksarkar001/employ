@@ -9,7 +9,7 @@ class GensetMasterAdmin(admin.ModelAdmin):
     list_filter = ('status', 'kilowatt')
 
     def save_model(self, request, obj, form, change):
-        if not obj.pk: 
+        if not change: 
             obj.created_by = request.user  
         super().save_model(request, obj, form, change)
 
@@ -19,7 +19,7 @@ class GensetRunningDetailAdmin(admin.ModelAdmin):
     list_filter = ('use_type', 'used_by_department')
 
     def save_model(self, request, obj, form, change):
-        if not obj.pk:
+        if not change:
             obj.created_by = request.user 
         super().save_model(request, obj, form, change)
 
@@ -29,7 +29,7 @@ class GensetFuelRequisitionAdmin(admin.ModelAdmin):
     list_filter = ('fuel_type',)
 
     def save_model(self, request, obj, form, change):
-        if not obj.pk:
+        if not change:
             obj.requested_by = request.user.username  
         super().save_model(request, obj, form, change)
 
@@ -40,7 +40,7 @@ class GensetMaintenanceRecordAdmin(admin.ModelAdmin):
     list_filter = ('date',)
 
     def save_model(self, request, obj, form, change):
-        if not obj.pk:
+        if not change:
             obj.requested_by = request.user.username  
         super().save_model(request, obj, form, change)
 

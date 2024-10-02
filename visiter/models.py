@@ -20,6 +20,9 @@ class VisitorRegister(models.Model):
         ('Office', 'Office'),
     ]
 
+
+    objects = models.Manager()
+
     visitor_type = models.CharField(max_length=50, choices=VISITOR_TYPE_CHOICES)
     visitor_mobile = models.CharField(max_length=15,) 
     name = models.CharField(max_length=100)
@@ -53,7 +56,9 @@ class AppointmentRegister(models.Model):
         ('Approved', 'Approved'),
         ('Cancel Appointment', 'Cancel Appointment'),
     ]
+    
 
+    objects = models.Manager()
     appointee_type = models.CharField(max_length=50, choices=APPOINTEE_TYPE_CHOICES)
     request_date = models.DateField(default=timezone.now)
     name = models.CharField(max_length=100)

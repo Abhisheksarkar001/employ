@@ -5,6 +5,9 @@ from django.contrib.auth import settings
 # Create your models here.
 
 class ConsumableAsset(models.Model):
+
+    objects = models.Manager()
+
     con_assets_no = models.CharField(max_length=100)  
     name = models.CharField(max_length=255)  
     marker = models.CharField(max_length=100)  
@@ -15,8 +18,8 @@ class ConsumableAsset(models.Model):
         return str(self.name)
     class Meta:
         """doc string here"""
-        verbose_name_plural = "ConsumableAsset"
-        verbose_name = "ConsumableAsset"
+        verbose_name_plural = "Consumable Asset"
+        verbose_name = "Consumable Asset"
 
 class AssetsType(models.Model):
 
@@ -32,6 +35,8 @@ class AssetsType(models.Model):
 
 
 class PurchaseRegister(models.Model):
+
+    objects = models.Manager()
     con_assets_no = models.ForeignKey(ConsumableAsset, on_delete=models.CASCADE)  
     name = models.CharField(max_length=255)  
     purchase_date = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
@@ -51,6 +56,8 @@ class PurchaseRegister(models.Model):
 
 
 class IssueRegister(models.Model):
+
+    objects = models.Manager()
     con_assets_no = models.ForeignKey(ConsumableAsset, on_delete=models.CASCADE)  
     employee_id = models.CharField(max_length=100)  
     issue_date = models.DateField()  
