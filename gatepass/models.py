@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.timezone import datetime
 from django.contrib.auth import get_user_model
 
 # Create your models here.
@@ -18,7 +19,7 @@ class GatePass(models.Model):
     objects = models.Manager()
     student_id = models.CharField(max_length=50)
     student_mo_no = models.CharField(max_length=15)
-    date = models.DateField(default=timezone.now)
+    date = models.DateField(default=datetime.now, null=True, blank=True)
     time = models.TimeField(default=timezone.now)
     pass_type = models.CharField(max_length=50, choices=PASS_TYPE_CHOICES)
     gate_pass_reason = models.TextField()

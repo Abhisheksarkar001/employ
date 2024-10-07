@@ -19,7 +19,7 @@ class EmployWorkReport(models.Model):
 
     objects = models.Manager()
     employ = models.ForeignKey(Employ, on_delete=models.CASCADE, null=True)
-    date = models.DateField(default=datetime.now, null=True, blank=True, editable=False) 
+    date = models.DateField(default=datetime.now, null=True, blank=True) 
     total_classes_taken = models.IntegerField(default=0)
     total_video_record = models.IntegerField(default=0)
     work_ppt_topic = models.CharField(max_length=200)
@@ -64,7 +64,7 @@ class TeacherVideoRecord(models.Model):
     subject = models.CharField(max_length=100)
     unit = models.CharField(max_length=100)
     topic = models.CharField(max_length=200)
-    duration = models.IntegerField(default=0)
+    duration = models.IntegerField()
 
 
 
@@ -102,10 +102,10 @@ class EmployTeskDetailReport(models.Model):
     task_name = models.CharField(max_length=255)
     employ_id = models.CharField(max_length=50)
     name = models.CharField(max_length=255)
-    task_detail_attach = models.FileField(upload_to='tasks/details/', null=True, blank=True)
-    assign_date = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
-    completed_date = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
-    actual_completed_date = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    task_detail_attach = models.FileField(upload_to='document/', null=True, blank=True)
+    assign_date = models.DateField(default=datetime.now, null=True, blank=True)
+    completed_date = models.DateField(default=datetime.now, null=True, blank=True)
+    actual_completed_date = models.DateField(default=datetime.now, null=True, blank=True)
     status = models.CharField(max_length=20, choices=TASK_STATUS_CHOICES, default=1)
     task_report_attach = models.FileField(upload_to='document/', null=True, blank=True)
     created_by = models.ForeignKey(
@@ -116,7 +116,7 @@ class EmployTeskDetailReport(models.Model):
         blank=True,
     )
     approved_by = models.CharField(max_length=255)
-    ranking = models.IntegerField(default=0)
+    ranking = models.IntegerField()
 
     def __str__(self):
         return str(self.name)
@@ -136,9 +136,9 @@ class EmployLeaveApplication(models.Model):
     object = models.Manager()
     work = models.ForeignKey(EmployWorkReport, on_delete=models.CASCADE, null=True)
     employ_id = models.CharField(max_length=50)
-    apply_date = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
-    leave_from = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
-    leave_to = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    apply_date = models.DateField(default=datetime.now, null=True, blank=True)
+    leave_from = models.DateField(default=datetime.now, null=True, blank=True)
+    leave_to = models.DateField(default=datetime.now, null=True, blank=True)
     leave_reason = models.TextField(null=True, blank=True)
     leave_type = models.CharField(max_length=20,)
     attach_file = models.FileField(upload_to='documents/', null=True, blank=True)

@@ -54,7 +54,7 @@ class VacancyRegister(models.Model):
     father_name = models.CharField(max_length=100)
     mother_name = models.CharField(max_length=100)
     sex = models.CharField(max_length=10)
-    dob = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    dob = models.DateField(default=datetime.now, null=True, blank=True)
     religion = models.CharField(max_length=50, choices=RELIGION_CHOICES)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     address = models.TextField(null=True, blank=True)

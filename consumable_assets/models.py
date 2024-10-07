@@ -39,12 +39,12 @@ class PurchaseRegister(models.Model):
     objects = models.Manager()
     con_assets_no = models.ForeignKey(ConsumableAsset, on_delete=models.CASCADE)  
     name = models.CharField(max_length=255)  
-    purchase_date = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    purchase_date = models.DateField(default=datetime.now, null=True, blank=True)
     bill_no = models.CharField(max_length=100)  
     amount = models.DecimalField(max_digits=10, decimal_places=2)  
     vendor_name = models.CharField(max_length=255, blank=True, null=True)  
     vendor_mo_no = models.CharField(max_length=15, blank=True, null=True)  
-    quantity = models.IntegerField()  
+    quantity = models.IntegerField(default=0)  
     created_by = models.CharField(max_length=100)  
 
     def __str__(self):
@@ -60,9 +60,9 @@ class IssueRegister(models.Model):
     objects = models.Manager()
     con_assets_no = models.ForeignKey(ConsumableAsset, on_delete=models.CASCADE)  
     employee_id = models.CharField(max_length=100)  
-    issue_date = models.DateField()  
+    issue_date = models.DateField(default=datetime.now, null=True, blank=True)
     issue_to = models.CharField(max_length=255)  
-    quantity = models.PositiveIntegerField()  
+    quantity = models.PositiveIntegerField(default=0)  
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,

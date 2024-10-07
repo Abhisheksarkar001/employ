@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.timezone import datetime
 from django.contrib.auth import settings
 
@@ -19,7 +20,7 @@ class GensetMaster(models.Model):
     objects = models.Manager()
     genset_no = models.CharField(max_length=100)
     kilowatt = models.IntegerField(choices=KilowattType.choices, default=KilowattType.KVA_65)
-    purchase_date = models.DateField(default=datetime.now, editable=False)
+    purchase_date = models.DateField(default=datetime.now, null=True, blank=True)
     bill_no = models.CharField(max_length=100)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     location = models.CharField(max_length=100, null=True, blank=True)
@@ -51,10 +52,10 @@ class GensetRunningDetail(models.Model):
     
     objects = models.Manager()
     genset_no = models.CharField(max_length=100)
-    date = models.DateField(default=datetime.now, editable=False)
+    date = models.DateField(default=datetime.now, null=True, blank=True)
     detail_purpose = models.TextField()
-    start_time = models.TimeField()
-    off_time = models.TimeField()
+    start_time = models.TimeField(default=timezone.now)
+    off_time = models.TimeField(default=timezone.now)
     total_time = models.DecimalField(max_digits=5, decimal_places=2)
     use_type = models.IntegerField(choices=UseType.choices)
     used_by_department = models.IntegerField(choices=UsedByDepartment.choices)
@@ -84,8 +85,8 @@ class GensetFuelRequisition(models.Model):
     
     objects = models.Manager()
     genset_no = models.CharField(max_length=100)
-    today_filling_date = models.DateField(default=datetime.now, editable=False)
-    previous_fuel_filling_date = models.DateField(default=datetime.now, editable=False)
+    today_filling_date = models.DateField(default=datetime.now, null=True, blank=True)
+    previous_fuel_filling_date = models.DateField(default=datetime.now, null=True, blank=True)
     total_running_hour = models.DecimalField(max_digits=5, decimal_places=2)
     previous_fuel_rate = models.DecimalField(max_digits=5, decimal_places=2)
     previous_fuel_qty = models.DecimalField(max_digits=5, decimal_places=2)
@@ -111,7 +112,7 @@ class GensetMaintenanceRecord(models.Model):
 
     objects = models.Manager()
     genset_no = models.CharField(max_length=100)
-    date = models.DateField(default=datetime.now, editable=False)
+    date = models.DateField(default=datetime.now, null=True, blank=True)
     bill_no = models.CharField(max_length=100)
     bill_amount = models.DecimalField(max_digits=10, decimal_places=2)
     service_provider_name = models.CharField(max_length=100)

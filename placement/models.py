@@ -58,7 +58,7 @@ class PlacementRegister(models.Model):
     mother_name = models.CharField(max_length=100)
     mother_mo_no = models.CharField(max_length=15, blank=True, null=True)
     sex = models.CharField(max_length=10)
-    dob = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    dob = models.DateField(default=datetime.now, null=True, blank=True)
     religion = models.CharField(max_length=50, choices=RELIGION_CHOICES)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     address = models.TextField()
@@ -70,7 +70,7 @@ class PlacementRegister(models.Model):
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     placed_organization_name = models.CharField(max_length=100, blank=True, null=True)
     salary_per_annum = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    placement_date =  models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    placement_date =  models.DateField(default=datetime.now, null=True, blank=True)
     biodata_attach = models.FileField(upload_to='document/', blank=True, null=True)
     offer_letter_attach = models.FileField(upload_to='document/', blank=True, null=True)
     
@@ -98,7 +98,7 @@ class PlacementRegister(models.Model):
     
    
     seminar_title = models.CharField(max_length=100, blank=True, null=True)
-    seminar_date = models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    seminar_date = models.DateField(default=datetime.now, null=True, blank=True)
     seminar_presented_in = models.CharField(max_length=100, blank=True, null=True)
     seminar_published = models.BooleanField(default=False)
     seminar_attach = models.FileField(upload_to='seminars/', blank=True, null=True)

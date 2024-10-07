@@ -9,9 +9,9 @@ class AssetsInOut(models.Model):
     objects = models.Manager()
     assets_no = models.CharField(max_length=100,)
     name = models.CharField(max_length=255,)
-    out_date =  models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    out_date =  models.DateField(default=datetime.now, null=True, blank=True)
     reason = models.TextField(null=True, blank=True)
-    in_date =  models.DateField(default=datetime.now, null=True, blank=True, editable=False)
+    in_date =  models.DateField(default=datetime.now, null=True, blank=True)
     technician_mo_no = models.CharField(max_length=15)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,

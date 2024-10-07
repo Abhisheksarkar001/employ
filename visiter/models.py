@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+from django.utils.timezone import datetime
 from django.contrib.auth import get_user_model
 
 # Create your models here.
@@ -31,8 +31,8 @@ class VisitorRegister(models.Model):
     state = models.CharField(max_length=50)
     visit_purpose = models.TextField()
     whom_to_meet = models.CharField(max_length=50, choices=WHOM_TO_MEET_CHOICES)
-    in_date_time = models.DateTimeField(default=timezone.now)
-    out_date_time = models.DateTimeField(null=True, blank=True)
+    in_date_time = models.DateField(default=datetime.now, null=True, blank=True)
+    out_date_time = models.DateField(default=datetime.now, null=True, blank=True)
     token_no = models.CharField(max_length=50, unique=True) 
 
     def __str__(self):
@@ -60,13 +60,13 @@ class AppointmentRegister(models.Model):
 
     objects = models.Manager()
     appointee_type = models.CharField(max_length=50, choices=APPOINTEE_TYPE_CHOICES)
-    request_date = models.DateField(default=timezone.now)
+    request_date = models.DateField(default=datetime.now, null=True, blank=True)
     name = models.CharField(max_length=100)
     mo_no = models.CharField(max_length=15,) 
     address = models.TextField()
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
-    appointment_date = models.DateField()
+    appointment_date = models.DateField(default=datetime.now, null=True, blank=True)
     appointment_time = models.TimeField()
     purpose = models.TextField()
     appointment_to_whom = models.CharField(max_length=50, choices=[
